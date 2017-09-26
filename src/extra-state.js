@@ -3,6 +3,9 @@ import eachArg from './each-arg';
 function extraState(state) {
     return (args, callback) => {
         let updated = eachArg(args, (name, value) => {
+            if (value === undefined) {
+                value = true;
+            }
             let index = state.indexOf(name);
             if (index < 0) {
                 if (value) {
