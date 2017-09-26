@@ -61,7 +61,8 @@ function makeBem(style) {
                     result += add(_extra);
                 }
                 return result;
-            }
+            },
+            instanceOf: 'BEM'
         }
         return self;
     }

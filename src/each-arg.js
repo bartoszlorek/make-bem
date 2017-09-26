@@ -27,6 +27,9 @@ function eachArg(args, callback) {
     if (name == null) {
         return;
     }
+    if (name.instanceOf === 'BEM') {
+        name = '' + name;
+    }
     let nameType = typeof name;
     if (nameType === 'string') {
         return name.indexOf(' ') > -1
