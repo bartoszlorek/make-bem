@@ -42,6 +42,7 @@ function makeBem(style) {
                 setExtra(args);
                 return self;
             },
+            instanceOf: 'BEM',
             toString: () => {
                 let result = style[selector(
                     _block,
@@ -61,8 +62,7 @@ function makeBem(style) {
                     result += add(_extra);
                 }
                 return result;
-            },
-            instanceOf: 'BEM'
+            }
         }
         return self;
     }
