@@ -6,22 +6,20 @@ describe('modifier-state.js', () => {
     const setModifier = modifierState(state);
 
     it('should add modifier', () => {
-        setModifier('active', true, () => {
+        setModifier(['active', true], () => {
             expect(state['active']).toBe('');
         })
     })
 
-    it('should call with name and valid value', () => {
+    it('should call with state as argument', () => {
         let callback = jest.fn();
-        setModifier('disabled', false, callback)
-        expect(callback.mock.calls[0]).toEqual([
-            state, null, 'disabled'
-        ]);
+        setModifier(['disabled', false], callback)
+        expect(callback.mock.calls[0]).toEqual([state]);
     })
 
     it('should NOT add existing modifier', () => {
         let callback = jest.fn();
-        setModifier('active', true, callback)
+        setModifier(['active', true], callback)
         expect(callback.mock.calls.length).toBe(0);
     })
 

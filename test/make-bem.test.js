@@ -3,11 +3,11 @@ import makeBem from '../src/index';
 describe('make-bem.js', () => {
 
     const style = {
-        'button': '_30_bc',
-        'button--active': '_21Q2a',
-        'button--primary': '_305tL',
-        'button__label': '_1LjQQ',
-        'button__label--hover': '_3pnpX'
+        'button': '_btn1',
+        'button--active': '_btna',
+        'button--primary': '_btnp',
+        'button__label': '_btn_l',
+        'button__label--hover': '_btn_lh'
     }
     const bem = makeBem(style);
 
@@ -16,7 +16,7 @@ describe('make-bem.js', () => {
             .mod('hover', false)
             .mod('active');
         expect(button.toString())
-            .toBe('_30_bc _21Q2a');
+            .toBe('_btn1 _btna');
     })
 
 })

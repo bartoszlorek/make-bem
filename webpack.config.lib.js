@@ -1,12 +1,20 @@
 var webpack = require('webpack');
+var path = require('path');
 
 module.exports = {
     entry: './src/index.js',
     output: {
-        path: './',
-        filename: './dist/make-bem.min.js',
+        path: path.join(__dirname, 'dist'),
+        filename: 'make-bem.min.js',
         library: 'makeBem',
         libraryTarget: 'umd'
+    },
+    module: {
+        loaders: [{
+            test: /\.jsx?$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader'
+        }]
     },
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),

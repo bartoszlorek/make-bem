@@ -4,7 +4,6 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "webpack --progress --colors --watch",
     "build": "webpack -p --config webpack.config.lib.js",
     "test": "jest",
     "test-watch": "npm test -- --watch"

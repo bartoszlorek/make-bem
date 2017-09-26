@@ -1,12 +1,16 @@
 import modifierNames from './modifier-names';
 import modifierState from './modifier-state';
+import extraState from './extra-state';
 import selector from './selector';
 
 // BEM methodology pattern:
 // block__element--modifier-value
 
 function add(value) {
-    return value ? ' ' + value : '';
+    if (value != null && value.length) {
+        return ' ' + value.join(' ');
+    }
+    return '';
 }
 
 function makeBem(style) {
@@ -17,22 +21,25 @@ function makeBem(style) {
         let _block = blockName || '',
             _element = elementName || '',
             _modifiers = [],
-            _extra = '';
+            _extra = [];
 
+        // modifiers need additional value
+        // check inside private variable
         const setModifier = modifierState({});
+        const setExtra = extraState(_extra);
 
         const self = {
             elem: (name) => {
                 return construct(_block, name);
             },
-            mod: (name, value) => {
-                setModifier(name, value, (state) => {
+            mod: (...args) => {
+                setModifier(args, (state) => {
                     _modifiers = modifierNames(state);
                 })
                 return self;
             },
-            extra: (value) => {
-                _extra = value;
+            extra: (...args) => {
+                setExtra(args);
                 return self;
             },
             toString: () => {
@@ -48,9 +55,11 @@ function makeBem(style) {
                             _element,
                             name
                         )]
-                    ).join(' '))
+                    ))
                 }
-                result += add(_extra);
+                if (_extra.length > 0) {
+                    result += add(_extra);
+                }
                 return result;
             }
         }
