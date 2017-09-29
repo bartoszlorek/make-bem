@@ -1,6 +1,4 @@
-function makeSelector(separator) {
-    const { element, modifier } = separator;
-
+function makeSelector({ element, modifier }) {
     return (blockName, elemName, modName) => {
         let result = blockName || '';
 
