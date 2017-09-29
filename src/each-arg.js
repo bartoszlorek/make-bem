@@ -6,7 +6,7 @@ function baseArray(array, callback) {
     while (++index < length) {
         let item = array[index];
         if (typeof item === 'string') {
-            result = callback(item, true);
+            result = callback(item);
         }
     }
     return result;
