@@ -32,17 +32,17 @@ function makeBem(style, spec = {}) {
         const setModifier = stateObject({});
         const setExtra = stateArray(_extra);
         const selector = makeSelector(separator);
+        const styleModifier = name => style[selector(
+            _block, _element, name
+        )];
 
         const self = {
-            elem: (name) => {
+            elem: name => {
                 return construct(_block, name);
             },
             mod: (...args) => {
                 setModifier(args, (state) => {
-                    _modifiers = joinState(
-                        state,
-                        separator.value
-                    )
+                    _modifiers = joinState(state, separator.value)
                 })
                 return self;
             },
@@ -52,21 +52,12 @@ function makeBem(style, spec = {}) {
             },
             instanceOf: 'BEM',
             toString: () => {
-                let result = style[selector(
-                    _block,
-                    _element
-                )] || '';
+                let result = style[selector(_block, _element)] || '';
 
-                if (_modifiers.length > 0) {
-                    result += add(_modifiers.map(
-                        name => style[selector(
-                            _block,
-                            _element,
-                            name
-                        )]
-                    ))
+                if (_modifiers.length) {
+                    result += add(_modifiers.map(styleModifier))
                 }
-                if (_extra.length > 0) {
+                if (_extra.length) {
                     result += add(_extra);
                 }
                 return result;
