@@ -1,4 +1,4 @@
-function modifierNames(state) {
+function joinState(state, separator = '-') {
     if (state == null) {
         return [];
     }
@@ -13,7 +13,7 @@ function modifierNames(state) {
             value = state[name];
         if (value !== null) {
             if (value !== '') {
-                name += '-' + value;
+                name += separator + value;
             }
             result[resIndex++] = name;
         }
@@ -21,4 +21,4 @@ function modifierNames(state) {
     return result;
 }
 
-export default modifierNames;
+export default joinState;

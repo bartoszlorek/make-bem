@@ -4,7 +4,10 @@ function baseArray(array, callback) {
         result;
 
     while (++index < length) {
-        result = callback(array[index], true);
+        let item = array[index];
+        if (typeof item === 'string') {
+            result = callback(item, true);
+        }
     }
     return result;
 }

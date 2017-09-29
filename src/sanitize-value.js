@@ -1,4 +1,4 @@
-function modifierValue(value) {
+function sanitizeValue(value) {
     if (value === undefined ||
         value === true) {
         return '';
@@ -11,4 +11,4 @@ function modifierValue(value) {
     return null;
 }
 
-export default modifierValue;
+export default sanitizeValue;

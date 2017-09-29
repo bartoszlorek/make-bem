@@ -1,6 +1,6 @@
 import eachArg from './each-arg';
 
-function extraState(state) {
+function stateArray(state) {
     return (args, callback) => {
         let updated = eachArg(args, (name, value) => {
             if (value === undefined) {
@@ -23,4 +23,4 @@ function extraState(state) {
     }
 }
 
-export default extraState;
+export default stateArray;

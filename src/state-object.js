@@ -1,10 +1,10 @@
-import modifierValue from './modifier-value';
+import sanitizeValue from './sanitize-value';
 import eachArg from './each-arg';
 
-function modifierState(state) {
+function stateObject(state) {
     return (args, callback) => {
         let updated = eachArg(args, (name, value) => {
-            let result = modifierValue(value);
+            let result = sanitizeValue(value);
             if (result !== state[name]) {
                 state[name] = result;
                 return true;
@@ -16,4 +16,4 @@ function modifierState(state) {
     }
 }
 
-export default modifierState;
+export default stateObject;

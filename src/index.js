@@ -1,10 +1,10 @@
-import modifierNames from './modifier-names';
-import modifierState from './modifier-state';
-import extraState from './extra-state';
-import selector from './selector';
+import stateArray from './state-array';
+import stateObject from './state-object';
+import joinState from './join-state';
+import makeSelector from './make-selector';
 
 // BEM methodology pattern:
-// block__element--modifier-value
+// block-name__element-name--modifier-value
 
 function add(value) {
     if (value != null && value.length) {
@@ -13,20 +13,25 @@ function add(value) {
     return '';
 }
 
-function makeBem(style) {
+function makeBem(style, spec = {}) {
     if (style == null) {
         throw 'making bem, first argument should be style';
     }
+    const separator = {
+        element: spec.element || '__',
+        modifier: spec.modifier || '--',
+        value: spec.value || '-'
+    }
+
     const construct = (blockName, elementName) => {
         let _block = blockName || '',
             _element = elementName || '',
             _modifiers = [],
             _extra = [];
 
-        // modifiers need additional value
-        // check inside private variable
-        const setModifier = modifierState({});
-        const setExtra = extraState(_extra);
+        const setModifier = stateObject({});
+        const setExtra = stateArray(_extra);
+        const selector = makeSelector(separator);
 
         const self = {
             elem: (name) => {
@@ -34,7 +39,10 @@ function makeBem(style) {
             },
             mod: (...args) => {
                 setModifier(args, (state) => {
-                    _modifiers = modifierNames(state);
+                    _modifiers = joinState(
+                        state,
+                        separator.value
+                    )
                 })
                 return self;
             },

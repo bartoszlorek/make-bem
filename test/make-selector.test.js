@@ -1,6 +1,11 @@
-import selector from '../src/selector';
+import makeSelector from '../src/make-selector';
 
-describe('selector.js', () => {
+describe('make-selector.js', () => {
+
+    const selector = makeSelector({
+        element: '__',
+        modifier: '--'
+    })
 
     it('should return empty string', () => {
         expect(selector()).toBe('');
