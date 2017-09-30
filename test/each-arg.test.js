@@ -18,8 +18,8 @@ describe('each-arg.js', () => {
         let callback = jest.fn();
         eachArg(['primary disabled active'], callback);
         expect(callback.mock.calls.length).toBe(3);
-        expect(callback.mock.calls[0]).toEqual(['primary', true]);
-        expect(callback.mock.calls[2]).toEqual(['active', true]);
+        expect(callback.mock.calls[0]).toEqual(['primary']);
+        expect(callback.mock.calls[2]).toEqual(['active']);
     })
 
     it('should handle object', () => {
@@ -39,8 +39,8 @@ describe('each-arg.js', () => {
             array = ['disabled', 'primary'];
         eachArg([array], callback);
         expect(callback.mock.calls.length).toBe(2);
-        expect(callback.mock.calls[0]).toEqual(['disabled', true]);
-        expect(callback.mock.calls[1]).toEqual(['primary', true]);
+        expect(callback.mock.calls[0]).toEqual(['disabled']);
+        expect(callback.mock.calls[1]).toEqual(['primary']);
     })
 
 })

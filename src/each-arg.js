@@ -1,3 +1,5 @@
+import { protoName } from './index';
+
 function baseArray(array, callback) {
     let length = array.length,
         index = -1,
@@ -26,24 +28,24 @@ function baseObject(object, callback) {
 }
 
 function eachArg(args, callback) {
-    let name = args[0];
-    if (name == null) {
+    let data = args[0];
+    if (data == null) {
         return;
     }
-    if (name.instanceOf === 'BEM') {
-        name = '' + name;
+    if (data.instanceOf === protoName) {
+        data = data.toString();
     }
-    let nameType = typeof name;
-    if (nameType === 'string') {
-        return name.indexOf(' ') > -1
-            ? baseArray(name.split(' '), callback)
-            : callback(name, args[1]);
+    let dataType = typeof data;
+    if (dataType === 'string') {
+        return data.indexOf(' ') < 0
+            ? callback(data, args[1])
+            : baseArray(data.split(' '), callback);
     }
-    if (Array.isArray(name)) {
-        return baseArray(name, callback);
+    if (Array.isArray(data)) {
+        return baseArray(data, callback);
     }
-    if (nameType === 'object') {
-        return baseObject(name, callback);
+    if (dataType === 'object') {
+        return baseObject(data, callback);
     }
 }
 

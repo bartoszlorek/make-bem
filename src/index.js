@@ -1,29 +1,25 @@
-import stateArray from './state-array';
 import stateObject from './state-object';
+import stateArray from './state-array';
 import joinState from './join-state';
 import makeSelector from './make-selector';
+import prefixedJoin from './.utils/prefixed-join';
 
-// BEM methodology pattern:
-// block-name__element-name--modifier-value
+// chosen BEM methodology scheme:
+// block-name__element-name--modifier-name[-value]
+// block-name--modifier-name[-value]
 
-function add(value) {
-    if (value != null && value.length) {
-        return ' ' + value.join(' ');
-    }
-    return '';
+export const protoName = 'MAKE_BEM';
+export const defaults = {
+    element: '__',
+    modifier: '--',
+    value: '-'
 }
 
-function makeBem(style, spec = {}) {
-    if (style == null) {
-        throw 'making bem, first argument should be style';
-    }
-    const separator = {
-        element: spec.element || '__',
-        modifier: spec.modifier || '--',
-        value: spec.value || '-'
-    }
+function makeBem(style, params) {
+    const spec = Object.assign(defaults, params);
+    const getSelector = makeSelector(spec);
 
-    const construct = (blockName, elementName) => {
+    const constructor = (blockName, elementName) => {
         let _block = blockName || '',
             _element = elementName || '',
             _modifiers = [],
@@ -31,41 +27,32 @@ function makeBem(style, spec = {}) {
 
         const setModifier = stateObject({});
         const setExtra = stateArray(_extra);
-        const selector = makeSelector(separator);
-        const ownStyle = name => style[selector(
-            _block, _element, name
-        )];
+        const getEntities = (modifier) => {
+            let selector = getSelector(_block, _element, modifier);
+            return style != null ? style[selector] : selector;
+        }
 
         const self = {
-            elem: name => {
-                return construct(_block, name);
+            elem: (name) => {
+                return constructor(_block, name);
             },
             mod: (...args) => {
-                setModifier(args, (state) => {
-                    _modifiers = joinState(state, separator.value)
-                })
+                setModifier(args, (state) =>
+                    _modifiers = joinState(state, spec.value));
                 return self;
             },
             extra: (...args) => {
                 setExtra(args);
                 return self;
             },
-            instanceOf: 'BEM',
-            toString: () => {
-                let result = ownStyle() || '';
-
-                if (_modifiers.length) {
-                    result += add(_modifiers.map(ownStyle))
-                }
-                if (_extra.length) {
-                    result += add(_extra);
-                }
-                return result;
-            }
+            instanceOf: protoName,
+            toString: () => (getEntities() || '')
+                + prefixedJoin(_modifiers.map(getEntities), ' ')
+                + prefixedJoin(_extra, ' ')
         }
         return self;
     }
-    return construct;
+    return constructor;
 }
 
 export default makeBem;
