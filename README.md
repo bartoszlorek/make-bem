@@ -34,7 +34,7 @@ const bem = makeBem(style)
 **.elem()** returns new instance, being an `element` of a given `block`
 
 ```javascript
-elem(name)    // [String]
+.elem(name)    // [String]
 ```
 
 **.mod()** adds `modifier` and returns the same instance
