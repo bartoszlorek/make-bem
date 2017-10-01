@@ -24,7 +24,7 @@ makeBem(style, separators)
 import makeBem from './make-bem.min'
 import style from './style.css'
 
-const bem = makeBem(style)
+const bem = makeBem(style)  // or just 'b'
 ```
 
 ## Methods
