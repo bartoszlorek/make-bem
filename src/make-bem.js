@@ -8,7 +8,7 @@ import prefixedJoin from './.utils/prefixed-join';
 // block-name__element-name--modifier-name[-value]
 // block-name--modifier-name[-value]
 
-export const PROTONAME = 'make-bem';
+export const PROTO_NAME = 'make-bem';
 
 const defaults = {
     element: '__',
@@ -46,7 +46,7 @@ function makeBem(style, params) {
                 setExtra(args);
                 return self;
             },
-            instanceOf: PROTONAME,
+            instanceOf: PROTO_NAME,
             toString: () => (getEntities() || '')
                 + prefixedJoin(_modifiers.map(getEntities), ' ')
                 + prefixedJoin(_extra, ' ')
