@@ -1,4 +1,4 @@
-import makeBem from '../src/index';
+import makeBem from '../src/make-bem';
 
 describe('make-bem.js', () => {
 

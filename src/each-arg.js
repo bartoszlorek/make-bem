@@ -1,4 +1,4 @@
-import { protoName } from './index';
+import { PROTONAME } from './make-bem';
 
 function baseArray(array, callback) {
     let length = array.length,
@@ -32,7 +32,7 @@ function eachArg(args, callback) {
     if (data == null) {
         return;
     }
-    if (data.instanceOf === protoName) {
+    if (data.instanceOf === PROTONAME) {
         data = data.toString();
     }
     let dataType = typeof data;
