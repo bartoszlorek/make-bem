@@ -1,6 +1,6 @@
 # make-bem
 
-Small library which provides an API managing BEM-like classes from `css-loader`. Without `style` guidelines, it's simple class names generator.
+Small library which provides an API for managing BEM classnames from `css-loader`. Without `style` guidelines, it's simple classnames generator.
 
 ## Initialization
 
@@ -29,7 +29,7 @@ const bem = makeBem(style)
 
 ## Methods
 
-`makeBem` returns function that creates new `bem-query` objects with methods:
+`makeBem` returns function that creates new `bem-query` objects with **chainable** methods:
 
 **.elem()** returns new instance, being an `element` of a given `block`
 
@@ -56,11 +56,11 @@ const bem = makeBem(style)
 .extra({name: predicate})     // [Object]
 ```
 
-**.toString()** returns formatted BEM-like classes
+**.toString()** returns formatted BEM classnames
 
-Important! Some type-checking functions require class name as a `String`. Use `toString` method to handle this case. In most scenario, pass `bem-query` instance and let type coercion do the "job".
+Important! Some type-checking functions require classname as a `String`. Use `toString` method to handle this case. In most scenario, pass `bem-query` instance and let type coercion do the "job".
 
-## Example
+## Examples
 
 with `style`
 
