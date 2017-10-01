@@ -37,7 +37,7 @@ const bem = makeBem(style)
 elem(name)    // [String]
 ```
 
-**.mod()** adds modifier and returns the same instance
+**.mod()** adds `modifier` and returns the same instance
 
 ```javascript
 .mod(name)                              // [String]
