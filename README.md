@@ -58,7 +58,7 @@ const bem = makeBem(style)
 
 **.toString()** returns formatted BEM-like classes
 
-Important! Some type-checking functions require class name as a `String`. Use this method to handle this case. In most scenario, pass `bem-query` instance and let type coercion do the "job".
+Important! Some type-checking functions require class name as a `String`. Use `toString` method to handle this case. In most scenario, pass `bem-query` instance and let type coercion do the "job".
 
 ## Usage
 
