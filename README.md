@@ -29,7 +29,7 @@ const bem = makeBem(style)
 
 ## Methods
 
-`makeBem` returns function that create new `bem-query` objects with methods:
+`makeBem` returns function that creates new `bem-query` objects with methods:
 
 **.elem()** returns new instance, being an `element` of a given `block`
 
