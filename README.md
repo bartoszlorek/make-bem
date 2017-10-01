@@ -1,6 +1,6 @@
 # make-bem
 
-Small library which provides an API managing BEM-like classes from `style-loader`. Without `style` guidelines, it's simple class generator.
+Small library which provides an API managing BEM-like classes from `style-loader`. Without `style` guidelines, it's simple class names generator.
 
 ## Initialization
 
