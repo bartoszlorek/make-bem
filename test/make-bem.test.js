@@ -1,4 +1,4 @@
-import makeBem from '../src/make-bem';
+import makeBem from '../src/make-bem'
 
 describe('make-bem.js', () => {
 
@@ -9,14 +9,14 @@ describe('make-bem.js', () => {
         'button__label': '_btn_l',
         'button__label--hover': '_btn_lh'
     }
-    const bem = makeBem(style);
+    const bem = makeBem(style)
 
     it('should handle multiple modifiers', () => {
         let button = bem('button')
             .mod('hover', false)
             .mod('active');
         expect(button.toString())
-            .toBe('_btn1 _btna');
+            .toBe('_btn1 _btna')
     })
 
 })

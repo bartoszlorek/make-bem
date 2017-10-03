@@ -1,15 +1,15 @@
 function makeSelector({ element, modifier }) {
     return (blockName, elemName, modName) => {
-        let result = blockName || '';
+        let result = blockName || ''
 
         if (elemName) {
-            result += element + elemName;
+            result += element + elemName
         }
         if (modName) {
-            result += modifier + modName;
+            result += modifier + modName
         }
-        return result;
+        return result
     }
 }
 
-export default makeSelector;
+export default makeSelector

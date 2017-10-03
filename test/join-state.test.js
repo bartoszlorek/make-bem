@@ -1,4 +1,4 @@
-import joinState from '../src/join-state';
+import joinState from '../src/join-state'
 
 describe('join-state.js', () => {
 
@@ -9,10 +9,10 @@ describe('join-state.js', () => {
     }
 
     it('should return empty array', () => {
-        expect(joinState()).toEqual([]);
-        expect(joinState(null)).toEqual([]);
-        expect(joinState({})).toEqual([]);
-        expect(joinState([])).toEqual([]);
+        expect(joinState()).toEqual([])
+        expect(joinState(null)).toEqual([])
+        expect(joinState({})).toEqual([])
+        expect(joinState([])).toEqual([])
     })
 
     it('should join keys with values', () => {

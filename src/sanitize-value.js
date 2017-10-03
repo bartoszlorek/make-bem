@@ -1,14 +1,14 @@
 function sanitizeValue(value) {
     if (value === undefined ||
         value === true) {
-        return '';
+        return ''
     }
-    let type = typeof value;
+    let type = typeof value
     if (type === 'string' ||
         type === 'number') {
-        return value;
+        return value
     }
-    return null;
+    return null
 }
 
-export default sanitizeValue;
+export default sanitizeValue
