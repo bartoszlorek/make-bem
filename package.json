@@ -26,5 +26,8 @@
     "jest-cli": "^21.1.0",
     "style-loader": "^0.18.2",
     "webpack": "^3.6.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
   }
 }
