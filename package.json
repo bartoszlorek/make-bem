@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ubery/make-bem.git"
+    "url": "git+https://github.com/bartoszlorek/make-bem.git"
   },
   "author": "Bartosz Lorek",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ubery/make-bem/issues"
+    "url": "https://github.com/bartoszlorek/make-bem/issues"
   },
-  "homepage": "https://github.com/ubery/make-bem#readme",
+  "homepage": "https://github.com/bartoszlorek/make-bem#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
