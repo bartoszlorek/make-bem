@@ -73,7 +73,7 @@ b('button')                             // '_btn'
 b('button').mod('active')               // '_btn _btna'
 
 let btn = b('button')
-btn.mod('primary', { active: true })    // '_btn _btna _btnp'
+btn.mod('primary', { active: true })    // '_btn _btnp _btna'
 btn.elem('label')                       // '_btn_l'
 
 b('button', 'label')                    // '_btn_l'
@@ -93,7 +93,7 @@ b('button')                             // 'button'
 b('button').mod('active')               // 'button button-active'
 
 let btn = b('button')
-btn.mod('primary', { active: true })    // 'button button-active button-primary'
+btn.mod('primary', { active: true })    // 'button button-primary button-active'
 btn.elem('label')                       // 'button_label'
 
 b('button', 'label')                    // 'button_label'
