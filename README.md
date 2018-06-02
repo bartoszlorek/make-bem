@@ -39,7 +39,7 @@ Returns new `bem-query` instance, being an `element` of a given `block`.
 ```javascript
 .mod(name, name, { name: value, name: predicate }, ...)
 ```
-Adds `modifiers` and returns the same instance. The `name` and `value` can be a String or Number. Moreover, `predicate` that decides if the corresponding `name` is added to the results can be a Boolean.
+Adds `modifiers` and returns the same instance. The `name` and `value` can be a String or Number. Moreover, `predicate` that decides if the corresponding `name` will be added to the results can be a Boolean.
 
 ### extra
 ```javascript
