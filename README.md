@@ -118,5 +118,5 @@ let btn = b('button')
 btn.mod('primary', { active: true })    // button button-primary button-active
 btn.elem('label')                       // button_label
 
-b('button', 'label', 'hover')           // button_label button__label--hover
+b('button', 'label', 'hover')           // button_label button_label-hover
 ```
