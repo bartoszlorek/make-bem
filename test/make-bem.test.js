@@ -4,24 +4,34 @@ describe('without style', () => {
     const b = makeBem()
 
     it('should return clean block', () => {
-        expect(b('btn').toString()).toBe('btn')
+        expect(b('button').toString()).toBe('button')
     })
 
     it('should return own element', () => {
-        const label = b('btn').elem('label')
-        expect(label.toString()).toBe('btn__label')
+        const label = b('button').elem('label')
+        expect(label.toString()).toBe('button__label')
     })
 
     it('should handle modifiers and extras', () => {
-        const btn = b('btn')
+        const btn = b('button')
             .mod('red', { big: true })
-            .extra('good', { add: true })
-        expect(btn.toString()).toBe('btn btn--red btn--big good add')
+            .extra('good', { right: true })
+        expect(btn.toString()).toBe('button button--red button--big good right')
     })
 
     it('should handle modifiers value', () => {
-        const btn = b('btn').mod({ big: true, type: 'submit' })
-        expect(btn.toString()).toBe('btn btn--big btn--type--submit')
+        const btn = b('button').mod({ big: true, type: 'submit' })
+        expect(btn.toString()).toBe('button button--big button--type--submit')
+    })
+
+    it('should preserve common block', () => {
+        const btn = b('button')
+        const label = btn.elem('label')
+        const text = label.elem('text')
+
+        expect(btn.toString()).toBe('button')
+        expect(label.toString()).toBe('button__label')
+        expect(text.toString()).toBe('button__text')
     })
 })
 
@@ -74,6 +84,8 @@ describe('with custom delimiters', () => {
 
     it('should handle modifiers', () => {
         const btn = b('button').mod('primary', { active: true, type: 'submit' })
-        expect(btn.toString()).toBe('x-button x-button-primary x-button-active x-button-type---submit')
+        expect(btn.toString()).toBe(
+            'x-button x-button-primary x-button-active x-button-type---submit'
+        )
     })
 })
